@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import type { Algorithm, Maze, Grid } from "../../lib/types";
 
-export type TPathfindingContext = {
+type TPathfindingContext = {
   algorithm: Algorithm;
   setAlgorithm: (algorithm: Algorithm) => void;
   maze: Maze;

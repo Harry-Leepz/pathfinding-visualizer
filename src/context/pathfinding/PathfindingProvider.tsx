@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PathfindingContext } from "./PathfindingContext"; // Import from the new file
+import { PathfindingContext } from "./PathfindingContext";
 import { createGrid } from "../../lib/helpers";
 import { END_TILE_CONFIG, START_TILE_CONFIG } from "../../lib/constants";
 
