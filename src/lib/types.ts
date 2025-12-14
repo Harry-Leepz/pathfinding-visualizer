@@ -2,6 +2,8 @@ export type Algorithm = "DIJKSTRA" | "ASTAR" | "BFS" | "DFS";
 
 export type Maze = "NONE" | "BINARY_TREE" | "RECURSIVE_DIVISION";
 
+export type Speed = 2 | 1 | 0.5; // 2x, 1x, 0.5x speed
+
 export type Tile = {
   row: number;
   col: number;
