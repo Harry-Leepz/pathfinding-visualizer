@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 import { usePathfinding } from "../../hooks/usePathfinding";
 import { MAX_COLS, MAX_ROWS } from "../../lib/constants";
 
+import Tile from "../tile";
+
 export default function Grid() {
   const { grid } = usePathfinding();
 
@@ -25,9 +27,21 @@ export default function Grid() {
     >
       {grid.map((row, rowIndex) => (
         <div key={rowIndex} className='flex'>
-          {row.map((tile, colIndex) => (
-            <div key={colIndex} className='bg-white w-2 h-2 border-sky-300 border'  />
-          ))}
+          {row.map((tile, colIndex) => {
+            const { isStart, isEnd, isWall, isTraversed, isPath } = tile;
+
+            return (
+              <Tile
+                row={rowIndex}
+                col={colIndex}
+                isStart={isStart}
+                isEnd={isEnd}
+                isWall={isWall}
+                isTraversed={isTraversed}
+                isPath={isPath}
+              />
+            );
+          })}
         </div>
       ))}
     </div>
