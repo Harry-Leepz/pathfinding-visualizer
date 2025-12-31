@@ -5,8 +5,42 @@ import { MAX_COLS, MAX_ROWS } from "../../lib/constants";
 
 import Tile from "../tile";
 
-export default function Grid() {
-  const { grid } = usePathfinding();
+import { useState, type RefObject } from "react";
+import { checkIfStartOrEnd, createNewGrid } from "../../lib/helpers";
+
+type GridProps = {
+  isVisualizationActiveRef?: RefObject<boolean>;
+};
+
+export default function Grid({ isVisualizationActiveRef }: GridProps) {
+  const { grid, setGrid } = usePathfinding();
+
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
+  function handleMouseDown(row: number, col: number) {
+    if (isVisualizationActiveRef?.current || checkIfStartOrEnd(row, col))
+      return;
+    setIsMouseDown(true);
+
+    const newGrid = createNewGrid(grid, row, col);
+    setGrid(newGrid);
+  }
+
+  function handleMouseUp(row: number, col: number) {
+    if (isVisualizationActiveRef?.current || checkIfStartOrEnd(row, col))
+      return;
+    setIsMouseDown(false);
+  }
+
+  function handleMouseEnter(row: number, col: number) {
+    if (isVisualizationActiveRef?.current || checkIfStartOrEnd(row, col))
+      return;
+
+    if (isMouseDown) {
+      const newGrid = createNewGrid(grid, row, col);
+      setGrid(newGrid);
+    }
+  }
 
   return (
     <div
@@ -25,20 +59,25 @@ export default function Grid() {
         }px] w-[${MAX_COLS * 7}px]`
       )}
     >
-      {grid.map((row, rowIndex) => (
+      {grid.map((r, rowIndex) => (
         <div key={rowIndex} className='flex'>
-          {row.map((tile, colIndex) => {
-            const { isStart, isEnd, isWall, isTraversed, isPath } = tile;
+          {r.map((tile, tileIndex) => {
+            const { row, col, isStart, isEnd, isWall, isTraversed, isPath } =
+              tile;
 
             return (
               <Tile
-                row={rowIndex}
-                col={colIndex}
+                key={tileIndex}
+                row={tile.row}
+                col={tile.col}
                 isStart={isStart}
                 isEnd={isEnd}
                 isWall={isWall}
                 isTraversed={isTraversed}
                 isPath={isPath}
+                handleMouseDown={() => handleMouseDown(row, col)}
+                handleMouseUp={() => handleMouseUp(row, col)}
+                handleMouseEnter={() => handleMouseEnter(row, col)}
               />
             );
           })}
