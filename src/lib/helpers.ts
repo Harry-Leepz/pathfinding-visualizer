@@ -30,3 +30,10 @@ export function createGrid(startTile: Tile, endTile: Tile) {
 
   return grid;
 }
+
+export function checkIfStartOrEnd(row: number, col: number) {
+  // determine if the tile is the start or end tile
+  return (
+    (row === 1 && col === 1) || (row === MAX_ROWS - 2 && col === MAX_COLS - 2)
+  );
+}
