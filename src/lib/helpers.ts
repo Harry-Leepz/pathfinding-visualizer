@@ -37,3 +37,17 @@ export function checkIfStartOrEnd(row: number, col: number) {
     (row === 1 && col === 1) || (row === MAX_ROWS - 2 && col === MAX_COLS - 2)
   );
 }
+
+export function createNewGrid(grid: Grid, row: number, col: number) {
+  // create shallow copy of grid
+  const newGrid = grid.slice();
+
+  const newTile = {
+    ...newGrid[row][col],
+    isWall: !newGrid[row][col].isWall,
+  };
+
+  newGrid[row][col] = newTile;
+
+  return newGrid;
+}
