@@ -17,6 +17,9 @@ type TileProps = {
   isWall: boolean;
   isTraversed: boolean;
   isPath: boolean;
+  handleMouseDown: (row: number, col: number) => void;
+  handleMouseUp: (row: number, col: number) => void;
+  handleMouseEnter: (row: number, col: number) => void;
 };
 
 export default function Tile({
@@ -27,6 +30,9 @@ export default function Tile({
   isWall,
   isTraversed,
   isPath,
+  handleMouseDown,
+  handleMouseUp,
+  handleMouseEnter,
 }: TileProps) {
   let tileStyle = BASE_TILE_STYLE;
 
@@ -54,6 +60,9 @@ export default function Tile({
     <div
       className={twMerge(tileStyle, borderStyle, edgeStyle)}
       id={`${row}-${col}`}
+      onMouseDown={() => handleMouseDown(row, col)}
+      onMouseUp={() => handleMouseUp(row, col)}
+      onMouseEnter={() => handleMouseEnter(row, col)}
     />
   );
 }
