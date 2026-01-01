@@ -32,9 +32,13 @@ export const BASE_TILE_STYLE =
 
 export const TRAVERSED_TILE_STYLE = BASE_TILE_STYLE + "bg-cyan-400";
 
-export const START_TILE_STYLE = BASE_TILE_STYLE + "bg-green-500";
+export const START_TILE_STYLE =
+  BASE_TILE_STYLE +
+  " bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.7)]";
 
-export const END_TILE_STYLE = BASE_TILE_STYLE + "bg-red-500";
+export const END_TILE_STYLE =
+  BASE_TILE_STYLE +
+  " bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.7)]";
 
 export const WALL_TILE_STYLE = BASE_TILE_STYLE + "bg-slate-200";
 
