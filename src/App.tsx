@@ -3,6 +3,7 @@ import { TileProvider } from "./context/tile/TileProvider";
 import { SpeedProvider } from "./context/speed/SpeedProvider";
 
 import GridContainer from "./components/grid";
+import Navigation from "./components/navigation";
 
 function App() {
   return (
@@ -10,7 +11,10 @@ function App() {
       <PathfindingProvider>
         <TileProvider>
           <SpeedProvider>
-            <GridContainer />
+            <div className='h-screen w-screen flex flex-col'>
+              <Navigation />
+              <GridContainer />
+            </div>
           </SpeedProvider>
         </TileProvider>
       </PathfindingProvider>
