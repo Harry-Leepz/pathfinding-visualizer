@@ -11,7 +11,12 @@ function App() {
       <PathfindingProvider>
         <TileProvider>
           <SpeedProvider>
-            <div className='h-screen w-screen flex flex-col'>
+            <div
+              className='
+  h-screen w-screen flex flex-col
+  bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900
+'
+            >
               <Navigation />
               <GridContainer />
             </div>

@@ -28,7 +28,7 @@ export const END_TILE_CONFIG = {
 };
 
 export const BASE_TILE_STYLE =
-  "lg:w-[17px] md:w-[15px] xs:w-[8px] w-[7px] lg:h-[17px] md:h-[15px] xs:h-[8px] h-[7px] border-t border-r border-sky-200 ";
+  "lg:w-[17px] md:w-[15px] xs:w-[8px] w-[7px] lg:h-[17px] md:h-[15px] xs:h-[8px] h-[7px] border-t border-r border-slate-400 ";
 
 export const TRAVERSED_TILE_STYLE = BASE_TILE_STYLE + "bg-cyan-400";
 
@@ -36,7 +36,7 @@ export const START_TILE_STYLE = BASE_TILE_STYLE + "bg-green-500";
 
 export const END_TILE_STYLE = BASE_TILE_STYLE + "bg-red-500";
 
-export const WALL_TILE_STYLE = BASE_TILE_STYLE + "bg-slate-800";
+export const WALL_TILE_STYLE = BASE_TILE_STYLE + "bg-slate-200";
 
 export const PATH_TILE_STYLE = BASE_TILE_STYLE + "bg-yellow-400";
 
