@@ -1,5 +1,15 @@
-import { MAX_COLS, MAX_ROWS } from "./constants";
+import {
+  BASE_TILE_STYLE,
+  END_TILE_CONFIG,
+  MAX_COLS,
+  MAX_ROWS,
+  START_TILE_CONFIG,
+} from "./constants";
 import type { Grid, Tile } from "./types";
+
+export function isEqualTiles(tileA: Tile, tileB: Tile) {
+  return tileA.row === tileB.row && tileA.col === tileB.col;
+}
 
 function createRow(row: number, startTile: Tile, endTile: Tile) {
   const currentRow = [];
@@ -50,4 +60,42 @@ export function createNewGrid(grid: Grid, row: number, col: number) {
   newGrid[row][col] = newTile;
 
   return newGrid;
+}
+
+export function resetGrid({
+  grid,
+  startTile = START_TILE_CONFIG,
+  endTile = END_TILE_CONFIG,
+}: {
+  grid: Grid;
+  startTile?: Tile;
+  endTile?: Tile;
+}) {
+  for (let row = 0; row < MAX_ROWS; row++) {
+    for (let col = 0; col < MAX_COLS; col++) {
+      const tile = grid[row][col];
+
+      tile.distance = Infinity;
+      tile.isPath = false;
+      tile.isTraversed = false;
+      tile.parent = null;
+      tile.isWall = false;
+
+      if (!isEqualTiles(startTile, tile) && !isEqualTiles(endTile, tile)) {
+        const tileElement = document.getElementById(`${tile.row}-${tile.col}`);
+
+        if (tileElement) {
+          tileElement.className = BASE_TILE_STYLE;
+        }
+
+        if (tile.row === MAX_ROWS - 1) {
+          tileElement?.classList.add("border-b");
+        }
+
+        if (tile.col === MAX_COLS - 1) {
+          tileElement?.classList.add("border-l");
+        }
+      }
+    }
+  }
 }
