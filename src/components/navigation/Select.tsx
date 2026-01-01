@@ -17,7 +17,10 @@ export default function Select({
 }: SelectProps) {
   return (
     <div className='flex flex-col items-start gap-1'>
-      <label htmlFor={label} className='text-xs text-slate-500 ml-1'>
+      <label
+        htmlFor={label}
+        className='text-xs font-medium tracking-wide text-slate-400 ml-1'
+      >
         {label}
       </label>
 
@@ -27,7 +30,28 @@ export default function Select({
         disabled={disabled}
         value={value}
         onChange={onChange}
-        className='bg-gray-300 hover:bg-gray-400 cursor-pointer transition ease-in active:ring-0 active:border-0 p-2 min-w-50 sm:min-w-full'
+        className='
+            w-full
+            appearance-none
+            rounded-xl
+            bg-slate-600
+            border
+            border-slate-400
+            px-4
+            py-2.5
+            text-sm
+            text-white
+            shadow-sm
+            transition
+            hover:border-slate-400
+            hover:bg-slate-700
+            focus:outline-none
+            focus:ring-2
+            focus:ring-slate-500/40
+            focus:border-slate-500
+            disabled:opacity-50
+            disabled:cursor-not-allowed
+          '
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>
