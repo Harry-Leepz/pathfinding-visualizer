@@ -28,10 +28,10 @@ export default function Navigation() {
   }
 
   return (
-    <div className='flex items-center justify-center min-h-18 border-b shadow-slate-600 sm:px-5 px-0'>
+    <div className='flex items-center justify-center min-h-18 shadow-slate-600 sm:px-5 px-0'>
       <div className='flex items-center lg:justify-between justify-center w-full sm:w-208'>
         <h1 className='lg:flex hidden w-[40%] pl-1 text-2xl font-semibold tracking-wide'>
-          <span className='relative bg-linear-to-r from-slate-500 to-slate-700 bg-clip-text text-transparent'>
+          <span className='relative bg-linear-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent'>
             Pathfinding Visualizer
             <span className='absolute left-0 -bottom-1 h-0.5 w-full bg-linear-to-r from-slate-400 to-slate-600 rounded-full' />
           </span>
