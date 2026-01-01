@@ -1,10 +1,49 @@
+import Select from "./Select";
+import { usePathfinding } from "../../hooks/usePathfinding";
+import { useTile } from "../../hooks/useTile";
+
+import { MAZES } from "../../lib/constants";
+import { resetGrid } from "../../lib/helpers";
+
+import type { Maze } from "../../lib/types";
+import { useState } from "react";
+
 export default function Navigation() {
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const { maze, setMaze, grid } = usePathfinding();
+  const { startTile, endTile } = useTile();
+
+  function handleGenerateMaze(maze: Maze) {
+    if (maze === "NONE") {
+      setMaze(maze);
+      resetGrid({ grid, startTile, endTile });
+      return;
+    }
+
+    setMaze(maze);
+    setIsDisabled(true);
+
+    // run maze algorithm
+  }
+
   return (
     <div className='flex items-center justify-center min-h-18 border-b shadow-slate-600 sm:px-5 px-0'>
       <div className='flex items-center lg:justify-between justify-center w-full sm:w-208'>
         <h1 className='lg:flex hidden w-[40%] text-2xl pl-1'>
           Pathfinding Visualizer
         </h1>
+
+        <div className='flex sm:items-end items-center justify-start sm:justify-between flex-col sm:flex-row sm:space-y-0 space-y-3 sm:py-0 py-4 sm:space-x-4'>
+          <Select
+            label='Maze'
+            value={maze}
+            options={MAZES}
+            onChange={(e) => {
+              handleGenerateMaze(e.target.value as Maze);
+            }}
+          />
+        </div>
       </div>
     </div>
   );
