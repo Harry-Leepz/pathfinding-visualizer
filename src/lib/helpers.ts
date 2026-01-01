@@ -92,7 +92,7 @@ export function resetGrid({
           tileElement?.classList.add("border-b");
         }
 
-        if (tile.col === MAX_COLS - 1) {
+        if (tile.col === 0) {
           tileElement?.classList.add("border-l");
         }
       }
