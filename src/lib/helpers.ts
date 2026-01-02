@@ -11,6 +11,10 @@ export function isEqualTiles(tileA: Tile, tileB: Tile) {
   return tileA.row === tileB.row && tileA.col === tileB.col;
 }
 
+export function isRowColEqual(row: number, col: number, tile: Tile) {
+  return row === tile.row && col === tile.col;
+}
+
 function createRow(row: number, startTile: Tile, endTile: Tile) {
   const currentRow = [];
 
