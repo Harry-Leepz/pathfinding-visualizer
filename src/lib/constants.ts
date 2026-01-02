@@ -42,7 +42,7 @@ export const END_TILE_STYLE =
 
 export const WALL_TILE_STYLE =
   BASE_TILE_STYLE +
-  " bg-slate-400 animate-[pulse_2s_ease-in-out_infinite] opacity-90";
+  " bg-slate-400 opacity-90";
 
 export const PATH_TILE_STYLE = BASE_TILE_STYLE + "bg-yellow-400";
 
