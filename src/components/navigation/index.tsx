@@ -7,24 +7,35 @@ import { resetGrid } from "../../lib/helpers";
 
 import type { Maze } from "../../lib/types";
 import { useState } from "react";
+import { runMazeAlgorithm } from "../../lib/runMazeAlgorithm";
+import { useSpeed } from "../../hooks/useSpeed";
 
 export default function Navigation() {
   const [isDisabled, setIsDisabled] = useState(false);
 
   const { maze, setMaze, grid } = usePathfinding();
   const { startTile, endTile } = useTile();
+  const { speed } = useSpeed();
 
   function handleGenerateMaze(maze: Maze) {
+    resetGrid({ grid, startTile, endTile });
+
     if (maze === "NONE") {
       setMaze(maze);
-      resetGrid({ grid, startTile, endTile });
       return;
     }
 
     setMaze(maze);
     setIsDisabled(true);
 
-    // run maze algorithm
+    runMazeAlgorithm({
+      maze,
+      grid,
+      startTile,
+      endTile,
+      setIsDisabled,
+      speed,
+    });
   }
 
   return (
