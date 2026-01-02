@@ -9,6 +9,11 @@ export type MazeSelection = {
 
 export type Speed = 2 | 1 | 0.5; // 2x, 1x, 0.5x speed
 
+export type SpeedSelection = {
+  name: string;
+  value: Speed;
+}
+
 export type Tile = {
   row: number;
   col: number;
