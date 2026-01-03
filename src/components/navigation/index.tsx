@@ -13,7 +13,8 @@ import { useSpeed } from "../../hooks/useSpeed";
 export default function Navigation() {
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const { maze, setMaze, grid } = usePathfinding();
+  const { maze, setMaze, grid, setGrid, setIsGraphVisualized } =
+    usePathfinding();
   const { startTile, endTile } = useTile();
   const { speed } = useSpeed();
 
@@ -36,6 +37,10 @@ export default function Navigation() {
       setIsDisabled,
       speed,
     });
+
+    const newGrid = grid.slice();
+    setGrid(newGrid);
+    setIsGraphVisualized(false);
   }
 
   return (
