@@ -40,9 +40,7 @@ export const END_TILE_STYLE =
   BASE_TILE_STYLE +
   " bg-red-500 animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.7)]";
 
-export const WALL_TILE_STYLE =
-  BASE_TILE_STYLE +
-  " bg-slate-400 opacity-90";
+export const WALL_TILE_STYLE = BASE_TILE_STYLE + " bg-slate-400 opacity-90";
 
 export const PATH_TILE_STYLE = BASE_TILE_STYLE + "bg-yellow-400";
 
@@ -57,3 +55,5 @@ export const SPEEDS: SpeedSelection[] = [
   { name: "Normal", value: 1 },
   { name: "Slow", value: 2 },
 ];
+
+export const SLEEP_TIME = 8;
