@@ -1,5 +1,4 @@
 import recursiveDivision from "./recursiveDivision";
-
 import { isEqualTiles } from "../../helpers";
 import getRandomNumber from "../../helpers/getRandomNumber";
 import sleep from "../../helpers/sleep";
@@ -7,7 +6,7 @@ import sleep from "../../helpers/sleep";
 import { SPEEDS, WALL_TILE_STYLE } from "../../constants";
 import type { Grid, Tile, Speed } from "../../types";
 
-type horizontalDivisionMazeParams = {
+type verticalDivisionParams = {
   grid: Grid;
   startTile: Tile;
   endTile: Tile;
@@ -19,7 +18,7 @@ type horizontalDivisionMazeParams = {
   width: number;
 };
 
-export default async function horizontalDivision({
+export default async function verticalDivision({
   grid,
   startTile,
   endTile,
@@ -29,20 +28,20 @@ export default async function horizontalDivision({
   col,
   height,
   width,
-}: horizontalDivisionMazeParams) {
-  const makeWallAt = row + getRandomNumber(0, height - 1) * 2 + 1;
-  const makePassageAt = col + getRandomNumber(0, width) * 2;
+}: verticalDivisionParams) {
+  const makeWallAt = col + getRandomNumber(0, width - 1) * 2 + 1;
+  const makePassageAt = row + getRandomNumber(0, height) * 2;
 
-  for (let i = 0; i < 2 * width - 1; i++) {
-    if (makePassageAt !== col + i) {
+  for (let i = 0; i < 2 * height - 1; i++) {
+    if (makePassageAt !== row + i) {
       if (
-        !isEqualTiles(grid[makeWallAt][col + i], startTile) &&
-        !isEqualTiles(grid[makeWallAt][col + i], endTile)
+        !isEqualTiles(grid[row + i][makeWallAt], startTile) &&
+        !isEqualTiles(grid[row + i][makeWallAt], endTile)
       ) {
-        grid[makeWallAt][col + i].isWall = true;
+        grid[row + i][makeWallAt].isWall = true;
 
         document.getElementById(
-          `${makeWallAt}-${col + i}`
+          `${row + i}-${makeWallAt}`
         )!.className = `${WALL_TILE_STYLE} animate-wall`;
         await sleep(10 * SPEEDS.find((s) => s.value === speed)!.value - 5);
       }
@@ -57,8 +56,8 @@ export default async function horizontalDivision({
     speed,
     row,
     col,
-    height: (makeWallAt - row + 1) / 2,
-    width,
+    height,
+    width: (makeWallAt - col + 1) / 2,
   });
 
   await recursiveDivision({
@@ -67,9 +66,9 @@ export default async function horizontalDivision({
     endTile,
     setIsDisabled,
     speed,
-    row: makeWallAt + 1,
-    col,
-    height: height - (makeWallAt - row + 1) / 2,
-    width,
+    row,
+    col: makeWallAt + 1,
+    height,
+    width: width - (makeWallAt - col + 1) / 2,
   });
 }
