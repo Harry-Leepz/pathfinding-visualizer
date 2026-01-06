@@ -10,6 +10,7 @@ import { useState } from "react";
 import { runMazeAlgorithm } from "../../lib/runMazeAlgorithm";
 import { useSpeed } from "../../hooks/useSpeed";
 import PlayButton from "./PlayButton";
+import runPathfindingAlgorithm from "../../lib/helpers/runPathfindingAlgorithm";
 
 export default function Navigation() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -52,6 +53,21 @@ export default function Navigation() {
     setIsGraphVisualized(false);
   }
 
+  function handlerRunVisualization() {
+    if (isGraphVisualized) {
+      setIsGraphVisualized(false);
+      resetGrid({ grid: grid.slice(), startTile, endTile });
+      return;
+    }
+
+    runPathfindingAlgorithm({
+      algorithm,
+      grid: grid.slice(),
+      startTile,
+      endTile,
+    });
+  }
+
   return (
     <div className='flex items-center justify-center min-h-18 shadow-slate-600 sm:px-5 px-0'>
       <div className='flex items-center lg:justify-between justify-center w-full sm:w-208'>
@@ -82,7 +98,7 @@ export default function Navigation() {
           <PlayButton
             disabled={isDisabled}
             isGraphVisualized={isGraphVisualized}
-            handleRunVisualization={() => {}}
+            handleRunVisualization={handlerRunVisualization}
           />
         </div>
       </div>
