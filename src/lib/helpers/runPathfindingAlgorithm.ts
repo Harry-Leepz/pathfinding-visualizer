@@ -1,3 +1,4 @@
+import breadthFirstSearch from "../algorithms/pathfinding/bfs";
 import type { Algorithm, Grid, Tile } from "../types";
 
 type runPathfindingAlgorithmParams = {
@@ -15,18 +16,8 @@ export default function runPathfindingAlgorithm({
 }: runPathfindingAlgorithmParams) {
   switch (algorithm) {
     case "BFS":
-      // Call BFS algorithm implementation
-      break;
-    case "DFS":
-      // Call DFS algorithm implementation
-      break;
-    case "DIJKSTRA":
-      // Call Dijkstra's algorithm implementation
-      break;
-    case "ASTAR":
-      // Call A* algorithm implementation
-      break;
+      return breadthFirstSearch(grid, startTile, endTile);
     default:
-      return;
+      return breadthFirstSearch(grid, startTile, endTile);
   }
 }
