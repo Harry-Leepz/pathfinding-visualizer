@@ -6,7 +6,8 @@
 
   --animate-traversed: traversed 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --animate-path: path 1s cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-path: path 1s cubic-bezier(0.4, 0, 0.2, 1),
+    pulse 2s ease-in-out infinite;
 }
 
 @keyframes wall {
@@ -21,44 +22,44 @@
 @keyframes traversed {
   0% {
     transform: scale(0.3);
-    background-color: #9333eabf;
+    background-color: #b569fbbf;
     border-radius: 100%;
   }
 
   50% {
-    background-color: #4f46e5bf;
+    background-color: #382fe1bf;
   }
 
   75% {
     transform: scale(1.2);
-    background-color: #3b82f6bf;
+    background-color: #18376abf;
   }
 
   100% {
     transform: scale(1);
-    background-color: #22d3ee;
+    background-color: #2274ee;
   }
 }
 
 @keyframes path {
   0% {
     transform: scale(0.3);
-    background-color: #e11d48bf;
+    background-color: #ff0037d6;
     border-radius: 100%;
   }
 
   50% {
-    background-color: #ea580cbf;
+    background-color: #ff4000bf;
   }
 
   75% {
     transform: scale(1.2);
-    background-color: #fb923cbf;
+    background-color: #f55200bf;
   }
 
   90% {
     transform: scale(0.8);
-    background-color: #fde68a;
+    background-color: #ff8000;
   }
 
   100% {
