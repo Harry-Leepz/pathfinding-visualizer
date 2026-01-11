@@ -1,9 +1,12 @@
-import { useRef } from "react";
 import Grid from "./Grid";
 
-export default function GridContainer() {
-  const isVisualizationActiveRef = useRef(false);
+type GridContainerProps = {
+  isVisualizationActiveRef: React.RefObject<boolean>;
+};
 
+export default function GridContainer({
+  isVisualizationActiveRef,
+}: GridContainerProps) {
   return (
     <>
       <Grid isVisualizationActiveRef={isVisualizationActiveRef} />
