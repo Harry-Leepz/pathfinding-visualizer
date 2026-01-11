@@ -34,6 +34,7 @@ export default async function constructBorder(
         !isEqualTiles(grid[row][col], startTile) &&
         !isEqualTiles(grid[row][col], endTile)
       ) {
+        grid[row][col].isWall = true;
         const tileElement = document.getElementById(`${row}-${col}`);
         if (tileElement) {
           tileElement.classList.add(
