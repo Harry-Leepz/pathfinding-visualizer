@@ -1,4 +1,8 @@
-import type { AlgorithmSelection, MazeSelection, SpeedSelection } from "./types";
+import type {
+  AlgorithmSelection,
+  MazeSelection,
+  SpeedSelection,
+} from "./types";
 
 export const MAX_ROWS = 39;
 export const MAX_COLS = 49;
@@ -64,3 +68,4 @@ export const PATHFINDING_ALGORITHMS: AlgorithmSelection[] = [
 ];
 
 export const SLEEP_TIME = 8;
+export const EXTENDED_SLEEP_TIME = 30;
