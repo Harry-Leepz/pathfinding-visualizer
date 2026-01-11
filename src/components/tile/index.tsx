@@ -38,18 +38,16 @@ export default function Tile({
 
   if (isStart) {
     tileStyle = START_TILE_STYLE;
-  }
-  if (isEnd) {
+  } else if (isEnd) {
     tileStyle = END_TILE_STYLE;
-  }
-  if (isWall) {
+  } else if (isWall) {
     tileStyle = WALL_TILE_STYLE;
-  }
-  if (isPath) {
+  } else if (isPath) {
     tileStyle = PATH_TILE_STYLE;
-  }
-  if (isTraversed) {
+  } else if (isTraversed) {
     tileStyle = TRAVERSED_TILE_STYLE;
+  } else {
+    tileStyle = BASE_TILE_STYLE;
   }
 
   const borderStyle =
