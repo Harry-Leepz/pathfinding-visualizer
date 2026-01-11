@@ -9,15 +9,15 @@ import { isEqualTiles } from "../helpers";
 import type { Tile } from "../types";
 
 export default function animatePath(
-  traveredTiles: Tile[],
+  traversedTiles: Tile[],
   path: Tile[],
   startTile: Tile,
   endTile: Tile,
   speed: number
 ) {
-  for (let i = 0; i < traveredTiles.length; i++) {
+  for (let i = 0; i < traversedTiles.length; i++) {
     setTimeout(() => {
-      const tile = traveredTiles[i];
+      const tile = traversedTiles[i];
       if (!isEqualTiles(tile, startTile) && !isEqualTiles(tile, endTile)) {
         document.getElementById(
           `${tile.row}-${tile.col}`
@@ -37,5 +37,5 @@ export default function animatePath(
         }
       }, EXTENDED_SLEEP_TIME * i * SPEEDS.find((s) => s.value === speed)!.value);
     }
-  }, SLEEP_TIME * traveredTiles.length * SPEEDS.find((s) => s.value === speed)!.value);
+  }, SLEEP_TIME * traversedTiles.length * SPEEDS.find((s) => s.value === speed)!.value);
 }
