@@ -75,7 +75,7 @@ export default function Navigation({
 
     const { traversedTiles, path } = runPathfindingAlgorithm({
       algorithm,
-      grid: grid.slice(),
+      grid,
       startTile,
       endTile,
     });
