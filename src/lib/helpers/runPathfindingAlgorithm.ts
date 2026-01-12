@@ -1,4 +1,5 @@
 import breadthFirstSearch from "../algorithms/pathfinding/bfs";
+import depthFirstSearch from "../algorithms/pathfinding/dfs";
 import type { Algorithm, Grid, Tile } from "../types";
 
 type runPathfindingAlgorithmParams = {
@@ -17,6 +18,8 @@ export default function runPathfindingAlgorithm({
   switch (algorithm) {
     case "BFS":
       return breadthFirstSearch(grid, startTile, endTile);
+    case "DFS":
+      return depthFirstSearch(grid, startTile, endTile);
     default:
       return breadthFirstSearch(grid, startTile, endTile);
   }
