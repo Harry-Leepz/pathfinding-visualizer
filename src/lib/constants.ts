@@ -60,7 +60,6 @@ export const MAZES: MazeSelection[] = [
 export const SPEEDS: SpeedSelection[] = [
   { name: "Fast", value: 0.5 },
   { name: "Normal", value: 1 },
-  { name: "Slow", value: 2 },
 ];
 
 export const PATHFINDING_ALGORITHMS: AlgorithmSelection[] = [
