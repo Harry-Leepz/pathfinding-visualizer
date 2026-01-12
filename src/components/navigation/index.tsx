@@ -11,7 +11,7 @@ import {
 } from "../../lib/constants";
 import { resetGrid } from "../../lib/helpers";
 
-import type { Algorithm, Maze } from "../../lib/types";
+import type { Algorithm, Maze, Speed } from "../../lib/types";
 import { useState } from "react";
 import { runMazeAlgorithm } from "../../lib/runMazeAlgorithm";
 import { useSpeed } from "../../hooks/useSpeed";
@@ -39,7 +39,7 @@ export default function Navigation({
     isGraphVisualized,
   } = usePathfinding();
   const { startTile, endTile } = useTile();
-  const { speed } = useSpeed();
+  const { speed, setSpeed } = useSpeed();
 
   function handleGenerateMaze(maze: Maze) {
     resetGrid({ grid, startTile, endTile });
@@ -120,6 +120,14 @@ export default function Navigation({
             options={PATHFINDING_ALGORITHMS}
             onChange={(e) => {
               setAlgorithm(e.target.value as Algorithm);
+            }}
+          />
+          <Select
+            label='Speed'
+            value={speed}
+            options={SPEEDS}
+            onChange={(e) => {
+              setSpeed(Number(e.target.value) as Speed);
             }}
           />
           <PlayButton
